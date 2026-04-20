@@ -10,7 +10,7 @@ function getRequiredEnv(name) {
 
 function getPmsCredentials() {
   return {
-    username: getRequiredEnv('PMS_USERNAME'),
+    username: getRequiredEnv('PMS_USERNAME').trim(),
     password: getRequiredEnv('PMS_PASSWORD'),
   };
 }

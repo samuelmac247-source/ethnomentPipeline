@@ -7,6 +7,7 @@ class LoginPage {
     this.usernameInput = page.locator('#username_field');
     this.passwordInput = page.locator('#password_field');
     this.loginButton = page.locator('#button_login');
+    this.loginForm = page.locator('#form_login');
     this.continueLink = page.getByRole('link', { name: /continue/i });
   }
 
@@ -26,9 +27,9 @@ class LoginPage {
   }
 
   async login(username, password) {
-    await this.usernameInput.fill(username);
+    await this.usernameInput.fill(username.trim());
     await this.passwordInput.fill(password);
-    await this.loginButton.click();
+    await this.loginForm.evaluate((form) => form.requestSubmit(form.querySelector('#button_login')));
   }
 
   async fillCredentials(username, password) {
@@ -37,7 +38,7 @@ class LoginPage {
   }
 
   async submit() {
-    await this.loginButton.click();
+    await this.loginForm.evaluate((form) => form.requestSubmit(form.querySelector('#button_login')));
   }
 
   async clickContinueIfPresent() {
