@@ -1,0 +1,19 @@
+{
+  "name": "pms-playwright-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright test automation for PMS",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "test:regression": "npx playwright test tests/regression",
+    "test:ci": "npx playwright test tests/regression/pms-doctor-login.spec.js",
+    "test:headed": "HEADED=1 npx playwright test",
+    "test:demo": "HEADED=1 PMS_SLOW_MO=1200 npx playwright test tests/regression/pms-doctor-login.spec.js",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "PWDEBUG=1 npx playwright test",
+    "report": "npx playwright show-report"
+  }
+}
